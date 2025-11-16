@@ -61,10 +61,6 @@ export default function TestimonialsCarousel() {
           ))}
         </div>
       </div>
-      <style jsx global>{`
-        html.fx-lite .fx-layer { opacity: .22 !important; filter: blur(14px) saturate(1) !important; }
-        @media (max-width: 768px) { .fx-layer { opacity: .18 !important; filter: blur(12px) saturate(1) !important; } }
-      `}</style>
     </section>
   );
 }

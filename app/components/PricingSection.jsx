@@ -155,18 +155,6 @@ export default function PricingSection() {
 				</div>
 				{showModal && <PlanModal plan={selectedPlan} onClose={closeModal} />}
 			</div>
-			<style jsx global>{`
-				html.fx-lite .fx-layer {
-					opacity: 0.22 !important;
-					filter: blur(16px) saturate(1) !important;
-				}
-				@media (max-width: 768px) {
-					.fx-layer {
-						opacity: 0.2 !important;
-						filter: blur(16px) saturate(1) !important;
-					}
-				}
-			`}</style>
 		</section>
 	);
 }

@@ -6,6 +6,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import ReferralModal from "./components/ReferralModal";
 import EasterEgg from "./components/EasterEgg";
 import StickyCTA from "./components/StickyCTA";
+import GlobalBackground from "./components/GlobalBackground"; // NEW
 
 // Build metadata from content.js and defaultSEO util
 const seo = defaultSEO(siteContent);
@@ -154,45 +155,8 @@ export default function RootLayout({ children }) {
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#F4F6F8" />
       </head>
-      <body className="font-sans min-h-screen flex flex-col text-gray-800 bg-gradient-to-br from-[#F0F3F8] via-[#E3E8EF] to-[#CED4DF]">
-        {/* Fixed background layers (Tailwind only, no <style> tag) */}
-        <div className="fixed inset-0 -z-50 pointer-events-none overflow-hidden">
-          {/* Color glow orbs (screen blend) */}
-          <div className="absolute inset-[-20%] mix-blend-screen saturate-110">
-            <div className="absolute left-[12%] top-[16%] w-[38vw] h-[32vw] rounded-full blur-[64px] opacity-30 bg-[radial-gradient(50%_50%_at_50%_50%,rgba(125,211,252,0.35)_0%,rgba(125,211,252,0)_60%)]" />
-            <div className="absolute right-[10%] top-[12%] w-[32vw] h-[28vw] rounded-full blur-[60px] opacity-28 bg-[radial-gradient(50%_50%_at_50%_50%,rgba(167,139,250,0.30)_0%,rgba(167,139,250,0)_62%)]" />
-            <div className="absolute left-[22%] bottom-[14%] w-[34vw] h-[28vw] rounded-full blur-[56px] opacity-26 bg-[radial-gradient(50%_50%_at_50%_50%,rgba(96,165,250,0.28)_0%,rgba(96,165,250,0)_60%)]" />
-            <div className="absolute right-[18%] bottom-[16%] w-[28vw] h-[24vw] rounded-full blur-[52px] opacity-26 bg-[radial-gradient(50%_50%_at_50%_50%,rgba(192,132,252,0.26)_0%,rgba(192,132,252,0)_60%)]" />
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[24vw] h-[20vw] rounded-full blur-[48px] opacity-22 bg-[radial-gradient(50%_50%_at_50%_50%,rgba(94,234,212,0.22)_0%,rgba(94,234,212,0)_60%)]" />
-          </div>
-
-          {/* Aurora + gloss sweeps */}
-          <div className="absolute inset-0">
-            <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-white/25 to-transparent" />
-            <div className="absolute inset-0 bg-gradient-to-tr from-white/25 via-transparent to-white/10" />
-            <div className="absolute left-[8%] top-[10%] w-[46vw] h-[40vw] rounded-full blur-3xl opacity-35 bg-[radial-gradient(60%_50%_at_50%_50%,rgba(214,222,235,0.36)_0%,rgba(214,222,235,0)_60%)]" />
-            <div className="absolute right-[8%] bottom-[10%] w-[50vw] h-[42vw] rounded-full blur-3xl opacity-30 bg-[radial-gradient(60%_50%_at_50%_50%,rgba(180,194,217,0.30)_0%,rgba(180,194,217,0)_60%)]" />
-          </div>
-
-          {/* Star streaks (static, thin, rotated) */}
-          <div className="absolute inset-0">
-            <div className="absolute left-[8%] top-[6%] w-px h-[140px] rotate-[-16deg] bg-gradient-to-b from-transparent via-[#D6DEEB99] to-transparent opacity-60 drop-shadow-[0_0_6px_rgba(180,194,217,0.35)]" />
-            <div className="absolute left-[22%] top-[-10%] w-px h-[120px] rotate-[-16deg] bg-gradient-to-b from-transparent via-[#D6DEEB80] to-transparent opacity-55 drop-shadow-[0_0_6px_rgba(180,194,217,0.35)]" />
-            <div className="absolute left-[38%] top-[0%] w-px h-[100px] rotate-[-16deg] bg-gradient-to-b from-transparent via-[#D6DEEB70] to-transparent opacity-55 drop-shadow-[0_0_6px_rgba(180,194,217,0.35)]" />
-            <div className="absolute left-[56%] top-[-14%] w-px h-[160px] rotate-[-16deg] bg-gradient-to-b from-transparent via-[#D6DEEB90] to-transparent opacity-60 drop-shadow-[0_0_6px_rgba(180,194,217,0.35)]" />
-            <div className="absolute left-[72%] top-[-8%] w-px h-[110px] rotate-[-16deg] bg-gradient-to-b from-transparent via-[#D6DEEB66] to-transparent opacity-55 drop-shadow-[0_0_6px_rgba(180,194,217,0.35)]" />
-            <div className="absolute left-[88%] top-[12%] w-px h-[130px] rotate-[-16deg] bg-gradient-to-b from-transparent via-[#D6DEEB80] to-transparent opacity-60 drop-shadow-[0_0_6px_rgba(180,194,217,0.35)]" />
-            <div className="absolute left-[14%] top-[42%] w-px h-[120px] rotate-[-16deg] bg-gradient-to-b from-transparent via-[#D6DEEB70] to-transparent opacity-55 drop-shadow-[0_0_6px_rgba(180,194,217,0.35)]" />
-            <div className="absolute left-[30%] top-[34%] w-px h-[150px] rotate-[-16deg] bg-gradient-to-b from-transparent via-[#D6DEEB80] to-transparent opacity-60 drop-shadow-[0_0_6px_rgba(180,194,217,0.35)]" />
-            <div className="absolute left-[50%] top-[46%] w-px h-[130px] rotate-[-16deg] bg-gradient-to-b from-transparent via-[#D6DEEB70] to-transparent opacity-55 drop-shadow-[0_0_6px_rgba(180,194,217,0.35)]" />
-            <div className="absolute left-[68%] top-[40%] w-px h-[140px] rotate-[-16deg] bg-gradient-to-b from-transparent via-[#D6DEEB90] to-transparent opacity-60 drop-shadow-[0_0_6px_rgba(180,194,217,0.35)]" />
-            <div className="absolute left-[84%] top-[50%] w-px h-[110px] rotate-[-16deg] bg-gradient-to-b from-transparent via-[#D6DEEB66] to-transparent opacity-55 drop-shadow-[0_0_6px_rgba(180,194,217,0.35)]" />
-          </div>
-
-          {/* Subtle grain/noise */}
-          <div className="absolute inset-0 opacity-[0.06] bg-[radial-gradient(rgba(0,0,0,0.035)_1px,transparent_1.2px)] [background-size:2px_2px]" />
-        </div>
-
+      <body className="font-sans min-h-screen flex flex-col text-gray-800 bg-transparent">
+        <GlobalBackground />
         <EasterEgg />
         <ReferralModal />
         <Navbar />

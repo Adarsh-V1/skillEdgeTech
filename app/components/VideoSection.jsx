@@ -33,10 +33,6 @@ export default function VideoSection() {
           />
         </div>
       </Tooltip>
-      <style jsx global>{`
-        html.fx-lite .fx-layer { opacity: .16 !important; }
-        @media (max-width: 768px) { .fx-layer { opacity: .14 !important; } }
-      `}</style>
     </section>
   );
 }

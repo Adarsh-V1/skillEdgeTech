@@ -58,10 +58,6 @@ export default function NewsletterSignup() {
           )}
         </div>
       </div>
-      <style jsx global>{`
-        html.fx-lite .fx-layer { opacity: .2 !important; filter: blur(12px) !important; }
-        @media (max-width: 768px) { .fx-layer { opacity: .18 !important; } }
-      `}</style>
     </section>
   );
 }

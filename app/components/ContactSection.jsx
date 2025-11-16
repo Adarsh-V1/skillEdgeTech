@@ -226,10 +226,6 @@ export default function ContactSection() {
           )}
         </div>
       </div>
-      <style jsx global>{`
-        html.fx-lite .fx-layer { opacity: .22 !important; }
-        @media (max-width: 768px) { .fx-layer { opacity: .2 !important; } }
-      `}</style>
     </section>
   );
 }
