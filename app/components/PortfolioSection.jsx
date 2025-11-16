@@ -3,18 +3,27 @@ import Image from "next/image";
 import { siteContent } from "../content";
 import { useSoundEffect } from "../hooks/useSoundEffect";
 import Tooltip from "./Tooltip";
+import { useState } from "react";
 
 const portfolioImages = [
-  { name: "Gym Website", img: "/assets/gym_website.png" },
-  { name: "Salon Beauty", img: "/assets/saloon_beauty.png" },
-  { name: "SaaS Website", img: "/assets/saas_website.png" },
-  { name: "Business Website", img: "/assets/website.png" },
-  { name: "Portfolio", img: "/assets/portfolio.png" },
-  { name: "Restaurant Website", img: "/assets/restaruant.png" },
+  { name: "Business Website", img: "/assets/saas_website.jpg" },
+  { name: "SaaS Website", img: "/assets/saas_website.jpg" },
+  { name: "Restaurant Website", img: "/assets/saas_website.jpg" },
+  { name: "Gym Website", img: "/assets/saas_website.jpg" },
+  { name: "Portfolio", img: "/assets/saas_website.jpg" },
+  { name: "Salon Beauty", img: "/assets/saas_website.jpg" },
 ];
 
 export default function PortfolioSection() {
   const { playClick } = useSoundEffect();
+  const [fallbackSrc, setFallbackSrc] = useState({}); // idx -> fallback path
+
+  function handleImgError(idx) {
+    setFallbackSrc(prev => {
+      if (prev[idx]) return prev; // avoid loops
+      return { ...prev, [idx]: "/assets/saas_website.jpg" };
+    });
+  }
 
   return (
     <section id="portfolio" className="relative px-2 py-16 md:py-24" style={{ contentVisibility: "auto", containIntrinsicSize: "900px" }}>
@@ -37,7 +46,7 @@ export default function PortfolioSection() {
         </h2>
         <div className="grid gap-4 grid-cols-2 sm:grid-cols-2 md:grid-cols-3 mx-2">
           {portfolioImages.map((p, idx) => (
-            <Tooltip key={p.name} text={p.name}>
+            <Tooltip key={`${p.name}-${idx}`} text={p.name}>
               <div
                 className="relative rounded-2xl overflow-hidden transition-transform duration-150 hover:scale-105 flex flex-col items-center text-center group will-change-transform"
                 onClick={playClick}
@@ -45,14 +54,15 @@ export default function PortfolioSection() {
               >
                 <div className="relative w-full h-40 sm:h-52 md:h-60 flex items-center justify-center">
                   <Image
-                    src={p.img}
+                    src={fallbackSrc[idx] || p.img}
                     alt={`${p.name} preview`}
                     fill
                     className="object-cover w-full h-full transition duration-300 group-hover:blur-[2.5px] group-hover:brightness-75"
+                    style={{ borderRadius: "1rem" }}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
                     loading="lazy"
                     decoding="async"
-                    sizes="(max-width: 768px) 100vw, 400px"
-                    style={{ borderRadius: "1rem" }}
+                    onError={() => handleImgError(idx)}
                   />
                   <div className="absolute inset-0 flex items-center justify-center">
                     <span
