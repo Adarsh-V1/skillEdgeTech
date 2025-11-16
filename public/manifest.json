@@ -3,8 +3,8 @@
   "short_name": "Bluvia",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#fafdff",
-  "theme_color": "#5edfff",
+  "background_color": "#e2e8f0",
+  "theme_color": "#4f46e5",
   "description": "Bluvia builds stunning, high-performance websites and digital experiences for businesses, startups, and creators.",
   "icons": [
     {

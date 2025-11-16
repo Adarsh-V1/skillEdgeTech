@@ -9,15 +9,12 @@ import ReviewsSection from "./components/ReviewsSection";
 import ContactSection from "./components/ContactSection";
 import ClientLogos from "./components/ClientLogos";
 import FAQSection from "./components/FAQSection";
-import dynamic from "next/dynamic";
+import BlogSection from "./components/BlogSection";
+import NewsletterSignup from "./components/NewsletterSignup";
 import ScrollIndicator from "./components/ScrollIndicator";
 import StickyCTA from "./components/StickyCTA";
 import StatsCounter from "./components/StatsCounter";
 import TestimonialsCarousel from "./components/TestimonialsCarousel";
-import Navbar from "./components/Navbar";
-
-const BlogSection = dynamic(() => import("./components/BlogSection"), { ssr: false, loading: () => <div /> });
-const NewsletterSignup = dynamic(() => import("./components/NewsletterSignup"), { ssr: false, loading: () => <div /> });
 
 export default function Home() {
 	const [showTop, setShowTop] = useState(false);
@@ -30,10 +27,9 @@ export default function Home() {
 
 	return (
 		<>
-			<Navbar />
 			<ScrollIndicator />
 			<StickyCTA />
-			<div className="w-full">
+			<div className="w-full bg-transparent">
 				<section className="pt-[96px] md:pt-[160px] pb-14 md:pb-20">
 					<HeroSection />
 					<StatsCounter stats={[

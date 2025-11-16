@@ -32,7 +32,7 @@ export default function Navbar() {
 
   return (
     <header
-      className="fixed top-0 left-0 w-full z-50 border-b border-white/30 text-gray-700 bg-gradient-to-br from-white/70 to-white/30 backdrop-blur-xl"
+      className="fixed top-0 left-0 w-full z-50 text-gray-700 bg-gradient-to-br from-white/70 to-white/30 backdrop-blur-xl"
       role="banner"
       aria-label="Main navigation"
     >

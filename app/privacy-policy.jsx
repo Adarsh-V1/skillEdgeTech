@@ -14,9 +14,23 @@ export default function PrivacyPolicy() {
           <li>We use analytics to improve our site, but do not track personal data.</li>
           <li>You can contact us anytime to request deletion of your data.</li>
         </ul>
-        <p className="text-gray-700">
-          Contact: <span className="text-blue-600">hello@bluvia.tech</span>
+        <h2 className="text-xl font-semibold mt-8 mb-3 text-gray-900">Advertising (Google AdSense)</h2>
+        <p className="mb-4 text-gray-700">
+          We use Google AdSense to display ads. Google and its partners may use cookies to serve ads based on your visits to this and other websites.
+          You can opt out of personalized advertising by visiting{" "}
+          <a className="underline text-blue-600 hover:text-blue-500" href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer">
+            Google Ads Settings
+          </a>{" "}
+          or learn more at{" "}
+          <a className="underline text-blue-600 hover:text-blue-500" href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer">
+            Google’s Advertising Policies
+          </a>.
         </p>
+        <p className="mb-4 text-gray-700">
+          We respect your choices. You can accept or decline cookies for ads and analytics using our banner. Without consent, we use non-personalized, limited processing where applicable.
+        </p>
+        <h2 className="text-xl font-semibold mt-8 mb-3 text-gray-900">Contact</h2>
+        <p className="text-gray-700">Contact: <span className="text-blue-600">hello@bluvia.tech</span></p>
       </div>
     </div>
   );

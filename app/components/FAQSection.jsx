@@ -57,10 +57,6 @@ export default function FAQSection() {
           ))}
         </div>
       </div>
-      <style jsx global>{`
-        html.fx-lite .fx-layer { opacity: .18 !important; }
-        @media (max-width: 768px) { .fx-layer { opacity: .16 !important; } }
-      `}</style>
     </section>
   );
 }

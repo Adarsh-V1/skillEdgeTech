@@ -6,7 +6,9 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import ReferralModal from "./components/ReferralModal";
 import EasterEgg from "./components/EasterEgg";
 import StickyCTA from "./components/StickyCTA";
-import GlobalBackground from "./components/GlobalBackground"; // NEW
+import GlobalBackground from "./components/GlobalBackground";
+import ConsentBanner from "./components/ConsentBanner";
+import AdsWrapper from "./components/AdsWrapper"; // add
 
 // Build metadata from content.js and defaultSEO util
 const seo = defaultSEO(siteContent);
@@ -98,6 +100,72 @@ export default function RootLayout({ children }) {
         <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
         <title>{metadata.title}</title>
         <link rel="icon" href="/assets/logo_round.png" type="image/png" />
+        {/* Consent Mode v2 + helpers (runs before GA/Ads) */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(){
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                window.gtag = gtag;
+                gtag('consent','default',{
+                  ad_storage:'denied',
+                  ad_user_data:'denied',
+                  ad_personalization:'denied',
+                  analytics_storage:'denied'
+                });
+                var m=document.cookie.match(/(?:^|; )ad_consent=(granted|denied)/);
+                if(m && m[1]==='granted'){
+                  gtag('consent','update',{
+                    ad_storage:'granted',
+                    ad_user_data:'granted',
+                    ad_personalization:'granted',
+                    analytics_storage:'granted'
+                  });
+                  window.__consented=true;
+                  // no immediate ad script load; AdsWrapper will decide
+                }
+                function setCookie(k,v,d){
+                  var dt=new Date();dt.setTime(dt.getTime()+d*864e5);
+                  document.cookie=k+"="+v+";path=/;expires="+dt.toUTCString()+";SameSite=Lax";
+                }
+                window.__acceptConsent=function(){
+                  setCookie('ad_consent','granted',180);
+                  gtag('consent','update',{
+                    ad_storage:'granted',
+                    ad_user_data:'granted',
+                    ad_personalization:'granted',
+                    analytics_storage:'granted'
+                  });
+                  window.__consented=true;
+                  // AdsWrapper will load script after content check
+                };
+                window.__rejectConsent=function(){
+                  setCookie('ad_consent','denied',180);
+                  gtag('consent','update',{
+                    ad_storage:'denied',
+                    ad_user_data:'denied',
+                    ad_personalization:'denied',
+                    analytics_storage:'denied'
+                  });
+                };
+              })();
+            `,
+          }}
+        />
+        {/* Google Analytics (Consent Mode aware) */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              // GA will respect Consent Mode states set above
+              gtag('config', 'G-XXXXXXXXXX');
+            `,
+          }}
+        />
         {/* JSON-LD for Organization and Website */}
         <script
           type="application/ld+json"
@@ -136,30 +204,15 @@ export default function RootLayout({ children }) {
             }),
           }}
         />
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-XXXXXXXXXX');
-            `,
-          }}
-        />
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4121958416488188"
-          crossOrigin="anonymous"
-        ></script>
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#F4F6F8" />
       </head>
-      <body className="font-sans min-h-screen flex flex-col text-gray-800 bg-transparent">
+      <body className="font-sans min-h-screen flex flex-col text-gray-800 ">
         <GlobalBackground />
         <EasterEgg />
         <ReferralModal />
         <Navbar />
+        <ConsentBanner />
         <main
           id="main-content"
           className="relative z-10 flex-1 flex flex-col items-center justify-center"
@@ -167,6 +220,7 @@ export default function RootLayout({ children }) {
         >
           {children}
         </main>
+        <AdsWrapper /> {/* render ads only when safe */}
         <StickyCTA />
         <SpeedInsights />
       </body>
