@@ -41,7 +41,7 @@ export default function ServicesSection() {
           {serviceImages.map((s) => (
             <Tooltip key={s.id} text={s.label + " – Click to learn more"}>
               <div
-                className="relative transition-transform duration-150 hover:scale-105 group"
+                className="relative transition-transform duration-150 hover:scale-105 group will-change-transform"
                 onClick={playClick}
                 style={{ minHeight: 220, height: "100%" }}
                 tabIndex={0}

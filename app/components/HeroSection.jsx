@@ -66,16 +66,11 @@ export default function HeroSection() {
                 width={180}
                 height={180}
                 style={{
-                  objectFit: "contain",
-                  objectPosition: "center",
-                  width: "100%",
-                  height: "100%",
-                  maxWidth: 180,
-                  maxHeight: 180,
-                  display: "block",
-                  transition: "filter 0.3s",
-                  filter: "drop-shadow(0 0 24px #38bdf8aa)",
-                  background: "transparent"
+                  objectFit:"contain",
+                  width:"100%",
+                  height:"100%",
+                  filter:"drop-shadow(0 0 18px #38bdf888)",
+                  willChange:"transform"
                 }}
                 priority
                 decoding="async"

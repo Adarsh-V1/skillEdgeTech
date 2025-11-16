@@ -9,6 +9,7 @@ import StickyCTA from "./components/StickyCTA";
 import GlobalBackground from "./components/GlobalBackground";
 import ConsentBanner from "./components/ConsentBanner";
 import AdsWrapper from "./components/AdsWrapper"; // add
+import Background from "./components/Background";
 
 // Build metadata from content.js and defaultSEO util
 const seo = defaultSEO(siteContent);
@@ -207,8 +208,8 @@ export default function RootLayout({ children }) {
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#F4F6F8" />
       </head>
-      <body className="font-sans min-h-screen flex flex-col text-gray-800 ">
-        <GlobalBackground />
+      <body className="font-sans min-h-screen flex flex-col  text-gray-900  ">
+        <Background/>
         <EasterEgg />
         <ReferralModal />
         <Navbar />

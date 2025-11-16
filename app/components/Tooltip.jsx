@@ -36,9 +36,9 @@ export default function Tooltip({ children, text, placement = "top" }) {
           style={{
             whiteSpace: "nowrap",
             letterSpacing: ".01em",
-            filter: "drop-shadow(0 2px 12px #2563eb88)",
-            opacity: 0.97,
-            backdropFilter: "blur(6px)",
+            filter: "drop-shadow(0 2px 8px #2563eb55)",
+            opacity: 0.95,
+            backdropFilter: "blur(4px)",
           }}
           role="tooltip"
         >

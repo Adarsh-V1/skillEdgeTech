@@ -8,9 +8,17 @@ export default function TestimonialsCarousel() {
   const [idx, setIdx] = useState(0);
   const reviews = siteContent.reviews || [];
   useEffect(() => {
-    if (reviews.length === 0) return;
-    const timer = setInterval(() => setIdx(i => (i + 1) % reviews.length), 5000);
-    return () => clearInterval(timer);
+    if (!reviews.length) return;
+    let timer;
+    function schedule() {
+      timer = setTimeout(() => {
+        if (document.hidden) { schedule(); return; }
+        setIdx(i => (i + 1) % reviews.length);
+        schedule();
+      }, 6000);
+    }
+    schedule();
+    return () => clearTimeout(timer);
   }, [reviews.length]);
   return (
     <section className="relative max-w-[1200px] mx-auto px-4 py-12" style={{ contentVisibility: "auto", containIntrinsicSize: "700px" }}>

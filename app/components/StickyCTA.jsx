@@ -11,7 +11,7 @@ export default function StickyCTA() {
         position: "fixed",
         bottom: "32px",
         left: "50%",
-        transform: "translate(-50%, 0)",
+        transform: "translate3d(-50%,0,0)",
       }}
       tabIndex={0}
       aria-label="Get Started"

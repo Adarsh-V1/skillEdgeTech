@@ -39,7 +39,7 @@ export default function PortfolioSection() {
           {portfolioImages.map((p, idx) => (
             <Tooltip key={p.name} text={p.name}>
               <div
-                className="relative rounded-2xl overflow-hidden transition-transform duration-150 hover:scale-105 flex flex-col items-center text-center group"
+                className="relative rounded-2xl overflow-hidden transition-transform duration-150 hover:scale-105 flex flex-col items-center text-center group will-change-transform"
                 onClick={playClick}
                 style={{ minHeight: 180, height: "100%", background: "transparent", padding: 0 }}
               >

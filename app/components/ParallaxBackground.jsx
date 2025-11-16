@@ -2,78 +2,55 @@
 import { useEffect, useRef, useState } from "react";
 
 const SHAPES = [
-  {
-    id: "circle1",
-    style: { left: "10%", top: "20%", width: 120, height: 120, opacity: 0.13 },
-    speed: 0.2,
-    color: "#38bdf8"
-  },
-  {
-    id: "circle2",
-    style: { left: "70%", top: "30%", width: 80, height: 80, opacity: 0.12 },
-    speed: 0.35,
-    color: "#2563eb"
-  }
+  { id: "circle1", style: { left: "10%", top: "20%", width: 120, height: 120, opacity: 0.12 }, speed: 0.15, color: "#38bdf8" },
+  { id: "circle2", style: { left: "70%", top: "30%", width: 80, height: 80, opacity: 0.11 }, speed: 0.28, color: "#2563eb" }
 ];
 
 export default function ParallaxBackground() {
   const refs = useRef([]);
-  const [isMobile, setIsMobile] = useState(false);
-
+  const [mobile, setMobile] = useState(false);
   useEffect(() => {
-    function handleResize() {
-      setIsMobile(window.innerWidth < 768);
-    }
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    function resize() { setMobile(window.innerWidth < 768); }
+    resize();
+    window.addEventListener("resize", resize);
+    return () => window.removeEventListener("resize", resize);
   }, []);
-
   useEffect(() => {
-    if (isMobile) return;
+    if (mobile) return;
+    let ticking = false;
     function onScroll() {
-      const scrollY = window.scrollY;
-      refs.current.forEach((el, i) => {
-        if (!el) return;
-        const speed = SHAPES[i].speed;
-        el.style.transform = `translateY(${scrollY * speed}px)`;
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const y = window.scrollY;
+        refs.current.forEach((el, i) => {
+          if (!el) return;
+            el.style.transform = `translate3d(0,${y * SHAPES[i].speed}px,0)`;
+        });
+        ticking = false;
       });
     }
     window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
     return () => window.removeEventListener("scroll", onScroll);
-  }, [isMobile]);
-
-  if (isMobile) return null;
-
-  // Add SVG shapes to DOM
+  }, [mobile]);
+  if (mobile) return null;
   return (
-    <div
-      aria-hidden="true"
-      style={{
-        position: "fixed",
-        inset: 0,
-        zIndex: 0,
-        pointerEvents: "none"
-      }}
-    >
-      {SHAPES.map((shape, i) => (
+    <div aria-hidden="true" style={{ position: "fixed", inset: 0, zIndex: 0, pointerEvents: "none" }}>
+      {SHAPES.map((s, i) => (
         <svg
-          key={shape.id}
+          key={s.id}
           ref={el => (refs.current[i] = el)}
-          style={{
-            position: "absolute",
-            ...shape.style,
-            zIndex: 0
-          }}
-          width={shape.style.width}
-          height={shape.style.height}
+          style={{ position: "absolute", ...s.style, willChange: "transform" }}
+          width={s.style.width}
+          height={s.style.height}
         >
           <circle
-            cx={shape.style.width / 2}
-            cy={shape.style.height / 2}
-            r={shape.style.width / 2}
-            fill={shape.color}
-            opacity={shape.style.opacity}
+            cx={s.style.width / 2}
+            cy={s.style.height / 2}
+            r={s.style.width / 2}
+            fill={s.color}
+            opacity={s.style.opacity}
           />
         </svg>
       ))}
