@@ -2,6 +2,7 @@
 import { useState, useRef } from "react";
 import { siteContent } from "../content";
 import emailjs from "emailjs-com";
+import Tooltip from "./Tooltip";
 
 const serviceId = "service_kv038bt";
 const templateId = "template_mnsq05k";
@@ -84,183 +85,141 @@ export default function ContactSection() {
     <section
       id="contact"
       className="relative px-2 py-16"
+      style={{ contentVisibility: "auto", containIntrinsicSize: "800px" }}
     >
+      {/* unique background accents */}
+      <div className="pointer-events-none absolute inset-0 -z-10 fx-layer">
+        <div className="absolute inset-0 bg-gradient-to-b from-white/30 to-transparent opacity-50" />
+        <div className="absolute inset-0 bg-gradient-to-tr from-white/25 via-transparent to-white/10 opacity-40" />
+      </div>
       <div className="relative z-10">
-        <div className="container-max">
-          <h2
-            className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-6 md:mb-10 text-center"
-            style={{ color: "#0f172a", letterSpacing: ".01em" }}
-          >
+        <div className="max-w-[1200px] mx-auto px-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-6 md:mb-10 text-center text-gray-900">
             Contact Bluvia – Start Your Web Project
           </h2>
-          <div
-            className="mb-8 text-base sm:text-lg text-center"
-            style={{ color: "#64748b" }}
-          >
+          <div className="mb-8 text-base sm:text-lg text-center text-gray-600">
             <span className="block mb-2">
               Reach us at{" "}
               <a
-                className="underline font-semibold"
+                className="underline font-semibold text-blue-600 hover:text-blue-500"
                 href={`mailto:${siteContent.contact.email}`}
-                style={{ color: "#2563eb" }}
               >
                 {siteContent.contact.email}
               </a>{" "}
               or WhatsApp:{" "}
-              <span className="font-semibold" style={{ color: "#0ea5e9" }}>
+              <span className="font-semibold text-blue-600">
                 {siteContent.contact.phone}
               </span>
             </span>
-            <span className="block text-sm text-blue-700">
-              Please provide <span className="font-semibold">at least</span> your email{" "}
-              <span className="font-semibold">or</span> phone number.
+            <span className="block text-sm text-gray-500">
+              Please provide <span className="font-semibold text-gray-700">at least</span> your email{" "}
+              <span className="font-semibold text-gray-700">or</span> phone number.
             </span>
           </div>
           {!submitted ? (
             <form
               ref={formRef}
               onSubmit={handleSubmit}
-              className="relative grid gap-8 grid-cols-1 sm:grid-cols-2 p-6 sm:p-10 rounded-2xl border border-white/20 shadow-xl glossy-card bg-white/80 backdrop-blur-md no-scale-effect"
-              style={{
-                color: "#0f172a",
-                maxWidth: 540,
-                margin: "0 auto",
-                boxShadow: "0 8px 40px 0 #2563eb22, 0 2px 8px 0 #38bdf822",
-                transition: "box-shadow 0.18s, background 0.18s"
-              }}
+              className="relative grid gap-6 grid-cols-1 sm:grid-cols-2 p-6 sm:p-8 rounded-2xl border border-gray-200 shadow-md shadow-black/5 bg-white text-gray-800 max-w-lg mx-auto"
             >
-              <div className="flex flex-col gap-2 sm:col-span-2">
-                <label
-                  htmlFor="name"
-                  className="font-semibold text-base"
-                  style={{ color: "#2563eb" }}
-                >
-                  Your Name
-                </label>
-                <input
-                  id="name"
-                  name="name"
-                  placeholder="Your name"
-                  className="p-3 border rounded-lg bg-white text-base sm:text-lg focus:ring-2 focus:ring-blue-300"
-                  style={{ borderColor: "#7dd3fc", color: "#0f172a" }}
-                  value={fields.name}
-                  onChange={handleChange}
-                  required
-                  autoComplete="name"
-                />
-              </div>
-              <div className="flex flex-col gap-2">
-                <label
-                  htmlFor="email"
-                  className="font-semibold text-base"
-                  style={{ color: "#2563eb" }}
-                >
-                  Email
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  placeholder="Email"
-                  className="p-3 border rounded-lg bg-white text-base sm:text-lg focus:ring-2 focus:ring-blue-300"
-                  style={{ borderColor: "#7dd3fc", color: "#0f172a" }}
-                  type="email"
-                  value={fields.email}
-                  onChange={handleChange}
-                  autoComplete="email"
-                />
-                <span className="text-xs text-blue-500 mt-1">
-                  Optional if phone is filled.
-                </span>
-              </div>
-              <div className="flex flex-col gap-2">
-                <label
-                  htmlFor="phone"
-                  className="font-semibold text-base"
-                  style={{ color: "#2563eb" }}
-                >
-                  Phone
-                </label>
-                <input
-                  id="phone"
-                  name="phone"
-                  placeholder="Phone number"
-                  className="p-3 border rounded-lg bg-white text-base sm:text-lg focus:ring-2 focus:ring-blue-300"
-                  style={{ borderColor: "#7dd3fc", color: "#0f172a" }}
-                  type="tel"
-                  value={fields.phone}
-                  onChange={handleChange}
-                  autoComplete="tel"
-                />
-                <span className="text-xs text-blue-500 mt-1">
-                  Optional if email is filled.
-                </span>
-              </div>
-              <div className="flex flex-col gap-2 sm:col-span-2">
-                <label
-                  htmlFor="message"
-                  className="font-semibold text-base"
-                  style={{ color: "#2563eb" }}
-                >
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  placeholder="Message"
-                  className="p-3 border rounded-lg bg-white text-base sm:text-lg focus:ring-2 focus:ring-blue-300"
-                  style={{ borderColor: "#7dd3fc", color: "#0f172a" }}
-                  rows={4}
-                  value={fields.message}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
+              <div className="absolute inset-0 bg-gradient-to-b from-white/30 to-transparent rounded-2xl pointer-events-none" />
+              <Tooltip text="Enter your name">
+                <div className="flex flex-col gap-2 sm:col-span-2">
+                  <label htmlFor="name" className="font-semibold text-gray-800">
+                    Your Name
+                  </label>
+                  <input
+                    id="name"
+                    name="name"
+                    placeholder="Your name"
+                    className="p-3 rounded-lg bg-white border border-gray-200 text-gray-800 placeholder:text-gray-500 focus:ring-2 focus:ring-blue-500 outline-none"
+                    value={fields.name}
+                    onChange={handleChange}
+                    required
+                    autoComplete="name"
+                  />
+                </div>
+              </Tooltip>
+              <Tooltip text="Enter your email address">
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="email" className="font-semibold text-gray-800">
+                    Email
+                  </label>
+                  <input
+                    id="email"
+                    name="email"
+                    placeholder="Email"
+                    className="p-3 rounded-lg bg-white border border-gray-200 text-gray-800 placeholder:text-gray-500 focus:ring-2 focus:ring-blue-500 outline-none"
+                    type="email"
+                    value={fields.email}
+                    onChange={handleChange}
+                    autoComplete="email"
+                  />
+                  <span className="text-xs text-gray-500 mt-1">
+                    Optional if phone is filled.
+                  </span>
+                </div>
+              </Tooltip>
+              <Tooltip text="Enter your phone number">
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="phone" className="font-semibold text-gray-800">
+                    Phone
+                  </label>
+                  <input
+                    id="phone"
+                    name="phone"
+                    placeholder="Phone number"
+                    className="p-3 rounded-lg bg-white border border-gray-200 text-gray-800 placeholder:text-gray-500 focus:ring-2 focus:ring-blue-500 outline-none"
+                    type="tel"
+                    value={fields.phone}
+                    onChange={handleChange}
+                    autoComplete="tel"
+                  />
+                  <span className="text-xs text-gray-500 mt-1">
+                    Optional if email is filled.
+                  </span>
+                </div>
+              </Tooltip>
+              <Tooltip text="Write your message">
+                <div className="flex flex-col gap-2 sm:col-span-2">
+                  <label htmlFor="message" className="font-semibold text-gray-800">
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    placeholder="Message"
+                    className="p-3 rounded-lg bg-white border border-gray-200 text-gray-800 placeholder:text-gray-500 focus:ring-2 focus:ring-blue-500 outline-none"
+                    rows={4}
+                    value={fields.message}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+              </Tooltip>
               {error && (
                 <div className="sm:col-span-2 text-red-600 font-semibold text-sm text-center">
                   {error}
                 </div>
               )}
-              <button
-                type="submit"
-                className="inline-flex items-center justify-center rounded-full px-6 py-3 font-semibold shadow sm:col-span-2 text-base sm:text-lg mt-2 no-scale-effect"
-                style={{
-                  background: "linear-gradient(90deg, #0ea5e9 0%, #2563eb 100%)",
-                  color: "#fff",
-                  letterSpacing: ".02em",
-                  boxShadow: "0 2px 8px 0 #38bdf822",
-                  transform: "none",
-                  transition: "background 0.18s, color 0.18s"
-                }}
-                disabled={loading}
-                tabIndex={0}
-              >
-                {loading ? (
-                  <span className="flex items-center gap-2">
-                    <svg className="animate-spin h-5 w-5 text-white" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
-                    </svg>
-                    Sending...
-                  </span>
-                ) : (
-                  "Send message"
-                )}
-              </button>
+              <Tooltip text="Send your message">
+                <button
+                  type="submit"
+                  className="relative inline-flex items-center justify-center rounded-full px-6 py-3 font-semibold sm:col-span-2 text-white shadow-lg hover:shadow-black/10 transition overflow-hidden bg-gradient-to-r from-[#3B82F6] via-[#60A5FA] to-[#3B82F6]"
+                  disabled={loading}
+                >
+                  <span className="absolute inset-0 bg-white/20 opacity-20" />
+                  <span className="relative">{loading ? "Sending..." : "Send message"}</span>
+                </button>
+              </Tooltip>
               <input type="hidden" name="time" value={new Date().toLocaleString()} />
             </form>
           ) : (
-            <div
-              className="p-6 sm:p-10 rounded-2xl border border-white/20 shadow-xl text-base sm:text-lg font-semibold glossy-card bg-white/80 backdrop-blur-md text-center"
-              style={{
-                color: "#0f172a",
-                maxWidth: 540,
-                margin: "0 auto",
-                boxShadow: "0 8px 40px 0 #2563eb22, 0 2px 8px 0 #38bdf822",
-              }}
-            >
-              <span className="block text-2xl mb-2 text-blue-700">Thank you!</span>
-              <span className="block mb-2">Your message has been received.</span>
-              <span className="block text-sm text-blue-500">
+            <div className="relative p-6 sm:p-8 rounded-2xl border border-gray-200 shadow-md shadow-black/5 bg-white text-center text-gray-800 max-w-lg mx-auto">
+              <div className="absolute inset-0 bg-gradient-to-b from-white/30 to-transparent rounded-2xl pointer-events-none" />
+              <span className="block text-2xl mb-2 text-gray-900">Thank you!</span>
+              <span className="block mb-2 text-gray-700">Your message has been received.</span>
+              <span className="block text-sm text-gray-500">
                 (Powered by EmailJS)
               </span>
             </div>
@@ -268,24 +227,8 @@ export default function ContactSection() {
         </div>
       </div>
       <style jsx global>{`
-        .no-scale-effect,
-        .no-scale-effect:hover,
-        .no-scale-effect:active,
-        .no-scale-effect:focus,
-        .no-scale-effect:visited {
-          transform: none !important;
-          transition-property: background, color, box-shadow !important;
-        }
-        .no-scale-effect:hover,
-        .no-scale-effect:active {
-          box-shadow: 0 2px 8px 0 #38bdf822;
-          filter: none !important;
-        }
-        .glossy-card.no-scale-effect:hover,
-        .glossy-card.no-scale-effect:active {
-          box-shadow: 0 8px 40px 0 #2563eb22, 0 2px 8px 0 #38bdf822;
-          background: linear-gradient(145deg, #fff 70%, #f4fafb 100%);
-        }
+        html.fx-lite .fx-layer { opacity: .22 !important; }
+        @media (max-width: 768px) { .fx-layer { opacity: .2 !important; } }
       `}</style>
     </section>
   );

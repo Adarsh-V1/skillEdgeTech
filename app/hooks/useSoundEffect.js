@@ -13,9 +13,14 @@ function getAudio(src) {
 
 export function useSoundEffect() {
   const playClick = useCallback(() => {
-    const audio = getAudio("/assets/sounds/click_sound.wav");
-    audio.currentTime = 0;
-    audio.play();
+    try {
+      const audio = getAudio("/assets/sounds/click_sound.wav");
+      audio.currentTime = 0;
+      const p = audio.play();
+      if (p && typeof p.then === "function") {
+        p.catch(() => {/* ignore autoplay block to keep UI smooth */});
+      }
+    } catch (_) { /* no-op */ }
   }, []);
   return { playClick };
 }

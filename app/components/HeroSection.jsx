@@ -4,9 +4,12 @@ import Image from "next/image";
 import { siteContent } from "../content";
 
 const heroImages = [
-  { src: "/assets/stats.png", alt: "Analytics dashboard illustration" },
-  { src: "/assets/website.png", alt: "Modern business website preview" },
-  { src: "/assets/restaruant.png", alt: "Restaurant website design" },
+  { src: "/assets/a1.jpg", alt: "Modern web design example", label: "Modern Web Design" },
+  { src: "/assets/a2.jpg", alt: "Creative UI/UX", label: "Creative UI/UX" },
+  { src: "/assets/a3.jpg", alt: "Business Website", label: "Business Websites" },
+  { src: "/assets/a4.jpg", alt: "E-commerce Website", label: "E-commerce" },
+  { src: "/assets/website.jpg", alt: "Website Example", label: "Website Example" },
+  { src: "/assets/seo.jpg", alt: "SEO Optimized", label: "SEO Optimized" }
 ];
 
 export default function HeroSection() {
@@ -22,15 +25,9 @@ export default function HeroSection() {
     // eslint-disable-next-line
   }, [current]);
 
-  const direction =
-    current > prev.current ||
-    (current === 0 && prev.current === heroImages.length - 1)
-      ? 1
-      : -1;
-
   return (
     <section className="px-2">
-      <div className="container-max grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
+      <div className="max-w-[1200px] mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
         <div>
           <div className="mb-8 flex flex-col items-center relative">
             {/* Static gradient background behind logo */}
@@ -95,24 +92,25 @@ export default function HeroSection() {
               />
             </div>
           </div>
-          <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold leading-tight text-blue-900 drop-shadow-lg text-center md:text-left mb-4">
-            <span className="inline-block transition-all hover:text-[#2563eb] hover:tracking-wider">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-semibold leading-tight text-gray-900 text-center md:text-left mb-4">
+            <span className="inline-block transition-all hover:text-blue-600">
               Oceanic Web Experiences for Modern Brands
             </span>
           </h1>
-          <p className="mt-2 text-lg sm:text-xl md:text-2xl text-blue-700 max-w-2xl text-center md:text-left mb-6">
+          <p className="mt-2 text-lg sm:text-xl md:text-2xl text-gray-600 max-w-2xl text-center md:text-left mb-6">
             {siteContent.tagline.replace(/SkillEdge/gi, "Bluvia")}
           </p>
           <div className="mt-6 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center md:justify-start">
             <a
               href="/booking"
-              className="inline-flex items-center justify-center rounded-full px-6 py-3 font-semibold oceanic-gradient text-white shadow scale-hover scale-press text-lg sm:text-xl transition-transform duration-150 hover:scale-105"
+              className="relative inline-flex items-center justify-center rounded-full px-6 py-3 font-semibold text-white shadow-lg hover:shadow-black/10 transition text-lg sm:text-xl overflow-hidden bg-gradient-to-r from-[#3B82F6] via-[#60A5FA] to-[#3B82F6]"
             >
-              Get started
+              <span className="absolute inset-0 bg-white/20 opacity-20" />
+              <span className="relative">Get started</span>
             </a>
             <a
               href="#features"
-              className="inline-flex items-center justify-center rounded-full px-6 py-3 font-semibold border border-blue-200 bg-white/70 text-blue-900 text-lg sm:text-xl transition-transform duration-150 hover:scale-105"
+              className="inline-flex items-center justify-center rounded-full px-6 py-3 font-semibold border border-gray-200 bg-white text-gray-800 hover:bg-[#F8FAFC] transition text-lg sm:text-xl"
             >
               Learn more
             </a>
@@ -128,13 +126,12 @@ export default function HeroSection() {
               {heroImages.map((img, idx) => (
                 <div
                   key={idx}
-                  className={`absolute top-0 left-0 w-full h-full transition-all duration-700 ease-[cubic-bezier(.7,0,.3,1)] ${
-                    idx === current
-                      ? "opacity-100 z-10 scale-100"
-                      : "opacity-0 z-0 scale-105"
-                  }`}
+                  className={`absolute top-0 left-0 w-full h-full transition-all duration-700 ease-[cubic-bezier(.7,0,.3,1)]`}
                   style={{
+                    opacity: idx === current ? 1 : 0,
+                    zIndex: idx === current ? 10 : 0,
                     pointerEvents: idx === current ? "auto" : "none",
+                    transform: idx === current ? "scale(1)" : "scale(1.05)",
                     transitionProperty: "opacity, transform",
                   }}
                 >
@@ -142,19 +139,33 @@ export default function HeroSection() {
                     src={img.src}
                     alt={img.alt}
                     fill
+                    className="object-cover w-full h-full transition duration-300"
                     style={{
-                      objectFit: "cover",
-                      width: "100%",
-                      height: "100%",
                       borderRadius: "1rem",
-                      boxShadow: idx === current ? "0 8px 32px #38bdf855" : "none",
-                      transition: "box-shadow 0.5s cubic-bezier(.7,0,.3,1)"
                     }}
                     sizes="(max-width: 768px) 100vw, 500px"
                     priority={idx === 0}
                     loading={idx === 0 ? "eager" : "lazy"}
                     decoding="async"
                   />
+                  {/* Overlay label in the middle */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <span
+                      className="font-bold text-center px-6 py-3 rounded select-none pointer-events-none transition-all duration-300 text-xl sm:text-2xl md:text-3xl"
+                      style={{
+                        color: "#fff",
+                        textShadow: "0 2px 12px #000, 0 1px 2px #222",
+                        background: "rgba(0,0,0,0.18)",
+                        opacity: 0.92,
+                        // Ensure text is always white
+                        WebkitTextFillColor: "#fff",
+                        textFillColor: "#fff",
+                      }}
+                      aria-label={img.label}
+                    >
+                      {img.label}
+                    </span>
+                  </div>
                 </div>
               ))}
             </div>

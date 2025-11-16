@@ -1,5 +1,6 @@
 'use client'
 import { useRef, useEffect } from "react";
+import Tooltip from "./Tooltip";
 
 const sections = [];
 let ticking = false;
@@ -47,12 +48,14 @@ if (typeof window !== "undefined" && !window.__parallaxRAF) {
 
 export default function ParallaxSection({ children, className = "", style = {}, ...props }) {
   return (
-    <section
-      className={className}
-      style={style}
-      {...props}
-    >
-      {children}
-    </section>
+    <Tooltip text="Parallax effect section">
+      <section
+        className={className}
+        style={style}
+        {...props}
+      >
+        {children}
+      </section>
+    </Tooltip>
   );
 }

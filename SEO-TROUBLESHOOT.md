@@ -10,7 +10,7 @@
   ```
   User-agent: *
   Allow: /
-  Sitemap: https://bluvia.tech/sitemap.xml
+  Sitemap: https://bluvia.vercel.app/sitemap.xml
   ```
 
 ## 3. **Noindex Meta Tag**
@@ -44,7 +44,7 @@
 ---
 
 ## **How to Check If Indexed**
-- Google: `site:bluvia.tech` (replace with your domain). If no results, your site is not indexed.
+- Google: `site:bluvia.vercel.app` (replace with your domain). If no results, your site is not indexed.
 
 ## **What To Do**
 1. Add your site to [Google Search Console](https://search.google.com/search-console/about).

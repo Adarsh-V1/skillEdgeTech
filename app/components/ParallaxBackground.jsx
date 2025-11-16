@@ -45,5 +45,38 @@ export default function ParallaxBackground() {
 
   if (isMobile) return null;
 
-  return null;
+  // Add SVG shapes to DOM
+  return (
+    <div
+      aria-hidden="true"
+      style={{
+        position: "fixed",
+        inset: 0,
+        zIndex: 0,
+        pointerEvents: "none"
+      }}
+    >
+      {SHAPES.map((shape, i) => (
+        <svg
+          key={shape.id}
+          ref={el => (refs.current[i] = el)}
+          style={{
+            position: "absolute",
+            ...shape.style,
+            zIndex: 0
+          }}
+          width={shape.style.width}
+          height={shape.style.height}
+        >
+          <circle
+            cx={shape.style.width / 2}
+            cy={shape.style.height / 2}
+            r={shape.style.width / 2}
+            fill={shape.color}
+            opacity={shape.style.opacity}
+          />
+        </svg>
+      ))}
+    </div>
+  );
 }

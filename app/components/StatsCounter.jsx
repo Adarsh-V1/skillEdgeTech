@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useRef, useState } from "react";
+import Tooltip from "./Tooltip";
 
 export default function StatsCounter({ stats }) {
   const [visible, setVisible] = useState(false);
@@ -15,15 +16,17 @@ export default function StatsCounter({ stats }) {
   }, []);
 
   return (
-    <section ref={ref} className="container-max py-12 flex flex-wrap justify-center gap-8">
+    <section ref={ref} className="max-w-[1200px] mx-auto px-4 py-12 flex flex-wrap justify-center gap-8">
       {stats.map((stat, idx) => (
-        <div key={idx} className="flex flex-col items-center">
-          <span className="text-4xl font-extrabold text-blue-700" aria-live="polite">
-            {visible ? <AnimatedNumber value={stat.value} /> : 0}
-            {stat.suffix}
-          </span>
-          <span className="text-lg text-blue-900 mt-2">{stat.label}</span>
-        </div>
+        <Tooltip key={idx} text={stat.label}>
+          <div className="flex flex-col items-center">
+            <span className="text-4xl font-extrabold text-gray-900" aria-live="polite">
+              {visible ? <AnimatedNumber value={stat.value} /> : 0}
+              {stat.suffix}
+            </span>
+            <span className="text-lg text-gray-500 mt-2">{stat.label}</span>
+          </div>
+        </Tooltip>
       ))}
     </section>
   );
