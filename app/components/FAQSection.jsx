@@ -16,33 +16,20 @@ export default function FAQSection() {
         />
       </div>
       <div className="max-w-[1200px] mx-auto px-4">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-8 text-gray-900 text-center">
+        <h2 className="fx-text-expand text-2xl sm:text-3xl md:text-4xl font-semibold mb-8 text-gray-900 text-center">
           Frequently Asked Questions
         </h2>
         <div className="flex flex-col gap-5 max-w-2xl mx-auto">
           {siteContent.faqs?.map((faq, idx) => (
-            <div
-              key={idx}
-              className={`rounded-xl border ${open === idx ? "border-gray-300" : "border-gray-200"} bg-white shadow-sm transition-all duration-200`}
-            >
+            <div key={idx} className={`rounded-xl border ${open === idx ? "border-gray-300" : "border-gray-200"} bg-white shadow-sm transition-all duration-200`}>
               <button
-                className="w-full flex items-center justify-between px-6 py-4 text-left font-semibold text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500/40 rounded-xl hover:bg-[#F8FAFC] transition"
+                className="pressable w-full flex items-center justify-between px-6 py-4 text-left font-semibold text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500/40 rounded-xl hover:bg-[#F8FAFC] transition"
                 onClick={() => setOpen(open === idx ? null : idx)}
                 aria-expanded={open === idx}
                 aria-controls={`faq-panel-${idx}`}
               >
-                <span className="text-lg">{faq.q}</span>
-                <span
-                  className="ml-4 transition-transform duration-200 text-blue-600"
-                  style={{
-                    transform: open === idx ? "rotate(90deg)" : "rotate(0deg)",
-                    fontSize: "1.5rem",
-                    lineHeight: 1,
-                  }}
-                  aria-hidden="true"
-                >
-                  ▶
-                </span>
+                <span className="fx-text-expand text-lg">{faq.q}</span>
+                <span className="ml-4 transition-transform duration-200 text-blue-600" style={{ transform: open === idx ? "rotate(90deg)" : "rotate(0deg)", fontSize: "1.5rem", lineHeight: 1 }} aria-hidden="true">▶</span>
               </button>
               <div
                 id={`faq-panel-${idx}`}

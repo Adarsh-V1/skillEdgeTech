@@ -11,3 +11,41 @@ html.fx-lite .fx-layer {
     filter: blur(14px) saturate(1) !important;
   }
 }
+
+/* text-motion utilities */
+.fx-text-expand {
+  display: inline-block;
+  transform-origin: 50% 60%;
+  transform: perspective(600px) translateZ(0) scaleX(1) translateY(0);
+  transition:
+    transform 220ms cubic-bezier(.2,.65,.2,1),
+    letter-spacing 220ms cubic-bezier(.2,.65,.2,1);
+  will-change: transform, letter-spacing;
+  letter-spacing: 0;
+}
+.fx-text-expand:hover {
+  transform: perspective(600px) translateZ(0) scaleX(1.06) translateY(-1px);
+  letter-spacing: 0.3px;
+}
+
+/* when wrapped in a .group (e.g., cards), animate on parent hover */
+.group:hover .fx-text-expand,
+.group\/hero:hover .fx-text-expand {
+  transform: perspective(600px) translateZ(0) scaleX(1.06) translateY(-1px);
+  letter-spacing: 0.3px;
+}
+
+/* tiny flip accent (optional class you can add) */
+.fx-text-flip:hover {
+  transform: rotateX(6deg) scaleX(1.02);
+}
+
+/* pressed/click feedback for buttons/links */
+.pressable {
+  transition: transform 160ms cubic-bezier(.2,.6,.2,1), filter 160ms ease;
+  will-change: transform, filter;
+}
+.pressable:active {
+  transform: translateY(1px) scale(0.99);
+  filter: brightness(0.98);
+}

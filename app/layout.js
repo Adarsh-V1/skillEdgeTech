@@ -6,7 +6,6 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import ReferralModal from "./components/ReferralModal";
 import EasterEgg from "./components/EasterEgg";
 import StickyCTA from "./components/StickyCTA";
-import GlobalBackground from "./components/GlobalBackground";
 import ConsentBanner from "./components/ConsentBanner";
 import AdsWrapper from "./components/AdsWrapper"; // add
 import Background from "./components/Background";

@@ -34,7 +34,7 @@ export default function TestimonialsCarousel() {
           }}
         />
       </div>
-      <h2 className="text-2xl font-semibold text-center mb-6 text-gray-900">What Our Clients Say</h2>
+      <h2 className="fx-text-expand text-2xl font-semibold text-center mb-6 text-gray-900">What Our Clients Say</h2>
       <div className="relative flex flex-col items-center">
         <div
           key={idx}
@@ -62,7 +62,7 @@ export default function TestimonialsCarousel() {
           {reviews.map((_, i) => (
             <button
               key={i}
-              className={`w-3 h-3 rounded-full ${i === idx ? "bg-blue-600" : "bg-blue-300/50"}`}
+              className={`pressable w-3 h-3 rounded-full ${i === idx ? "bg-blue-600" : "bg-blue-300/50"}`}
               onClick={() => setIdx(i)}
               aria-label={`Go to testimonial ${i + 1}`}
             />

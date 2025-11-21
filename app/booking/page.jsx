@@ -21,10 +21,10 @@ const websiteTypes = [
 ];
 
 const plans = [
-  { tier: "Starter Pack", price: "₹500" },
-  { tier: "Business Pack", price: "₹1,000" },
-  { tier: "Pro Pack", price: "₹2,000" },
-  { tier: "Premium Pack", price: "₹4,000" }
+  { tier: "Starter Pack", price: "₹1,000" },
+  { tier: "Business Pack", price: "₹2,000" },
+  { tier: "Pro Pack", price: "₹3,000" },
+  { tier: "Premium Pack", price: "₹5,000" }
 ];
 
 const showcaseImages = [
@@ -158,10 +158,10 @@ function BookingForm() {
       </div>
       {/* heading */}
       <div className="w-full max-w-3xl mb-12">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold text-gray-900 text-center mb-3">
+        <h1 className="fx-text-expand text-4xl sm:text-5xl md:text-6xl font-semibold text-gray-900 text-center mb-3">
           Book Your Website
         </h1>
-        <p className="text-gray-600 text-center max-w-2xl mx-auto mb-6 text-lg md:text-xl">
+        <p className="fx-text-expand text-gray-600 text-center max-w-2xl mx-auto mb-6 text-lg md:text-xl">
           Start your digital journey with Bluvia. Fill out the form below to book your website project—fast, modern, and tailored for your business.
         </p>
       </div>
@@ -292,7 +292,7 @@ function BookingForm() {
             <div className="md:col-span-2 flex justify-center">
               <button
                 type="submit"
-                className="relative inline-flex items-center justify-center rounded-full px-8 py-3 font-semibold text-white mt-2 shadow-lg hover:shadow-black/10 transition overflow-hidden bg-gradient-to-r from-[#3B82F6] via-[#60A5FA] to-[#3B82F6]"
+                className="pressable relative inline-flex items-center justify-center rounded-full px-8 py-3 font-semibold text-white mt-2 shadow-lg hover:shadow-black/10 transition overflow-hidden bg-gradient-to-r from-[#3B82F6] via-[#60A5FA] to-[#3B82F6]"
                 disabled={loading}
               >
                 <span className="absolute inset-0 bg-white/20 opacity-20" />
@@ -363,13 +363,13 @@ function BookingForm() {
         <div className="mt-12 flex flex-wrap gap-4 justify-center">
           <Link
             href="/"
-            className="inline-flex items-center justify-center rounded-full px-7 py-3 font-semibold border border-gray-200 bg-white text-gray-800 hover:bg-[#F8FAFC] text-lg"
+            className="pressable inline-flex items-center justify-center rounded-full px-7 py-3 font-semibold border border-gray-200 bg-white text-gray-800 hover:bg-[#F8FAFC] text-lg"
           >
             ← Back to Home
           </Link>
           <a
             href="/#features"
-            className="inline-flex items-center justify-center rounded-full px-7 py-3 font-semibold border border-gray-200 bg-white text-gray-800 hover:bg-[#F8FAFC] text-lg"
+            className="pressable inline-flex items-center justify-center rounded-full px-7 py-3 font-semibold border border-gray-200 bg-white text-gray-800 hover:bg-[#F8FAFC] text-lg"
             onClick={e => {
               e.preventDefault();
               window.location.href = "/#features";
@@ -379,7 +379,7 @@ function BookingForm() {
           </a>
           <a
             href="/#pricing"
-            className="inline-flex items-center justify-center rounded-full px-7 py-3 font-semibold border border-gray-200 bg-white text-gray-800 hover:bg-[#F8FAFC] text-lg"
+            className="pressable inline-flex items-center justify-center rounded-full px-7 py-3 font-semibold border border-gray-200 bg-white text-gray-800 hover:bg-[#F8FAFC] text-lg"
             onClick={e => {
               e.preventDefault();
               window.location.href = "/#pricing";
@@ -389,7 +389,7 @@ function BookingForm() {
           </a>
           <a
             href="/#contact"
-            className="inline-flex items-center justify-center rounded-full px-7 py-3 font-semibold border border-gray-200 bg-white text-gray-800 hover:bg-[#F8FAFC] text-lg"
+            className="pressable inline-flex items-center justify-center rounded-full px-7 py-3 font-semibold border border-gray-200 bg-white text-gray-800 hover:bg-[#F8FAFC] text-lg"
             onClick={e => {
               e.preventDefault();
               window.location.href = "/#contact";

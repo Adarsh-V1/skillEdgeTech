@@ -12,53 +12,53 @@ const userId = "ylfphfzXIJRLFZohj";
 const plans = [
 	{
 		tier: "Starter Pack",
-		price: "₹500",
+		price: "₹1,000",
 		features: [
-			"1-page modern website",
-			"Mobile & desktop ready",
+			"Up to 2 pages",
+			"Responsive design",
 			"Basic SEO",
 			"1 revision",
-			"3–4 days delivery",
+			"4–5 days delivery",
 			"Free hosting",
 		],
 	},
 	{
 		tier: "Business Pack",
-		price: "₹1,000",
+		price: "₹2,000",
 		features: [
-			"Up to 3 pages",
-			"Advanced SEO",
+			"Up to 5 pages",
+			"Advanced on-page SEO",
 			"Smooth animations",
-			"Enhanced UI/UX",
+			"Improved UI/UX",
 			"3 revisions",
-			"4–5 days delivery",
+			"5–7 days delivery",
 			"Free hosting",
 		],
 		recommended: true,
 	},
 	{
 		tier: "Pro Pack",
-		price: "₹2,000",
+		price: "₹3,000",
 		features: [
-			"Up to 8 pages",
+			"Up to 10 pages",
 			"Premium SEO",
-			"3D/advanced effects",
-			"Custom forms & integrations",
+			"Advanced effects/3D",
+			"Forms & integrations",
 			"Unlimited revisions",
 			"Priority support",
-			"5–7 days delivery",
+			"7–10 days delivery",
 			"Free hosting",
 		],
 	},
 	{
 		tier: "Premium Pack",
-		price: "₹4,000",
+		price: "₹5,000",
 		features: [
-			"All Pro features",
-			"Analytics setup",
-			"Priority support",
+			"Everything in Pro",
 			"Custom branding",
-			"7–10 days delivery",
+			"Analytics setup",
+			"Ongoing support",
+			"10–14 days delivery",
 			"Free hosting",
 		],
 	},
@@ -105,7 +105,7 @@ export default function PricingSection() {
 				/>
 			</div>
 			<div className="max-w-[1200px] mx-auto px-4">
-				<h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-4 md:mb-6 text-gray-900">
+				<h2 className="fx-text-expand text-2xl sm:text-3xl md:text-4xl font-semibold mb-4 md:mb-6 text-gray-900">
 					Website Pricing & Packages
 				</h2>
 				<div className="mb-6 text-center text-gray-600 text-base font-medium">
@@ -119,7 +119,7 @@ export default function PricingSection() {
 					{plans.map((p, idx) => (
 						<div
 							key={idx}
-							className="relative rounded-xl border border-gray-200 bg-white shadow-md shadow-black/5 p-6 flex flex-col items-center justify-between text-center text-gray-800 transition-transform duration-150 hover:shadow-lg hover:shadow-black/10"
+							className="group pressable relative rounded-xl border border-gray-200 bg-white shadow-md shadow-black/5 p-6 flex flex-col items-center justify-between text-center text-gray-800 transition-transform duration-150 hover:shadow-lg hover:shadow-black/10"
 						>
 							<div className="absolute inset-0 bg-gradient-to-b from-white/40 to-transparent rounded-xl pointer-events-none" />
 							{p.recommended && (
@@ -128,10 +128,10 @@ export default function PricingSection() {
 								</div>
 							)}
 							<div className="flex flex-col items-center">
-								<h3 className="font-semibold text-lg sm:text-xl md:text-2xl mb-1 md:mb-2 text-gray-900">
+								<h3 className="fx-text-expand font-semibold text-lg sm:text-xl md:text-2xl mb-1 md:mb-2 text-gray-900">
 									{p.tier}
 								</h3>
-								<p className="mt-1 text-2xl sm:text-3xl md:text-4xl font-extrabold text-blue-500">
+								<p className="fx-text-expand mt-1 text-2xl sm:text-3xl md:text-4xl font-extrabold text-blue-500">
 									{p.price}
 								</p>
 								<ul className="mt-4 space-y-1 sm:space-y-2 text-sm sm:text-base md:text-lg text-gray-600 text-center">
@@ -143,7 +143,7 @@ export default function PricingSection() {
 							<div className="mt-6 md:mt-8">
 								<button
 									type="button"
-									className="relative inline-flex items-center justify-center rounded-full px-5 py-2.5 font-semibold text-white shadow-lg hover:shadow-black/10 transition overflow-hidden bg-gradient-to-r from-[#3B82F6] via-[#60A5FA] to-[#3B82F6]"
+									className="pressable relative inline-flex items-center justify-center rounded-full px-5 py-2.5 font-semibold text-white shadow-lg hover:shadow-black/10 transition overflow-hidden bg-gradient-to-r from-[#3B82F6] via-[#60A5FA] to-[#3B82F6]"
 									onClick={() => handleChoose(p)}
 								>
 									<span className="absolute inset-0 bg-white/20 opacity-20" />
@@ -206,15 +206,15 @@ function PlanModal({ plan, onClose }) {
 				<div className="absolute inset-0 bg-gradient-to-tr from-white/30 via-transparent to-white/10 opacity-60 rounded-2xl pointer-events-none" />
 				<button
 					onClick={onClose}
-					className="absolute top-3 right-3 text-gray-500 text-2xl font-bold hover:text-gray-800"
+					className="pressable absolute top-3 right-3 text-gray-500 text-2xl font-bold hover:text-gray-800"
 					aria-label="Close"
 				>
 					×
 				</button>
-				<h3 className="text-xl font-semibold mb-2 text-gray-900 text-center">
+				<h3 className="fx-text-expand text-xl font-semibold mb-2 text-gray-900 text-center">
 					Get Started with {plan?.tier}
 				</h3>
-				<div className="text-center text-gray-600 mb-4">
+				<div className="fx-text-expand text-center text-gray-600 mb-4">
 					{plan?.price}
 				</div>
 				{!submitted ? (
@@ -309,7 +309,7 @@ function PlanModal({ plan, onClose }) {
 						<button
 							type="submit"
 							disabled={loading}
-							className="relative inline-flex items-center justify-center rounded-full px-6 py-3 font-semibold text-white shadow-lg hover:shadow-black/10 transition overflow-hidden bg-gradient-to-r from-[#3B82F6] via-[#60A5FA] to-[#3B82F6]"
+							className="pressable relative inline-flex items-center justify-center rounded-full px-6 py-3 font-semibold text-white shadow-lg hover:shadow-black/10 transition overflow-hidden bg-gradient-to-r from-[#3B82F6] via-[#60A5FA] to-[#3B82F6]"
 						>
 							<span className="absolute inset-0 bg-white/20 opacity-20" />
 							<span className="relative">

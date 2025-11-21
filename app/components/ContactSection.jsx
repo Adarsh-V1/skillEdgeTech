@@ -94,7 +94,7 @@ export default function ContactSection() {
       </div>
       <div className="relative z-10">
         <div className="max-w-[1200px] mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-6 md:mb-10 text-center text-gray-900">
+          <h2 className="fx-text-expand text-2xl sm:text-3xl md:text-4xl font-semibold mb-6 md:mb-10 text-center text-gray-900">
             Contact Bluvia – Start Your Web Project
           </h2>
           <div className="mb-8 text-base sm:text-lg text-center text-gray-600">
@@ -205,7 +205,7 @@ export default function ContactSection() {
               <Tooltip text="Send your message">
                 <button
                   type="submit"
-                  className="relative inline-flex items-center justify-center rounded-full px-6 py-3 font-semibold sm:col-span-2 text-white shadow-lg hover:shadow-black/10 transition overflow-hidden bg-gradient-to-r from-[#3B82F6] via-[#60A5FA] to-[#3B82F6]"
+                  className="pressable relative inline-flex items-center justify-center rounded-full px-6 py-3 font-semibold sm:col-span-2 text-white shadow-lg hover:shadow-black/10 transition overflow-hidden bg-gradient-to-r from-[#3B82F6] via-[#60A5FA] to-[#3B82F6]"
                   disabled={loading}
                 >
                   <span className="absolute inset-0 bg-white/20 opacity-20" />

@@ -54,9 +54,10 @@ export default function Navbar() {
               priority
             />
           </div>
-          <span className="font-extrabold text-xl md:text-2xl transition-colors duration-150 text-gray-900 tracking-tight">
+          <span className="fx-text-expand font-extrabold text-xl md:text-2xl transition-colors duration-150 text-gray-900 tracking-tight">
             Bluvia
             <span className="ml-2 text-base font-normal text-gray-500 hidden sm:inline">
+              {" "}
               – Modern Web Design
             </span>
           </span>
@@ -69,7 +70,7 @@ export default function Navbar() {
             <a
               key={id}
               href={`#${id}`}
-              className="px-4 py-2 rounded-xl text-gray-500 hover:text-blue-500 border border-transparent hover:border-gray-200 hover:bg-[#F8FAFC] transition"
+              className="pressable px-4 py-2 rounded-xl text-gray-500 hover:text-blue-500 border border-transparent hover:border-gray-200 hover:bg-[#F8FAFC] transition"
               onClick={(e) => handleSectionNav(e, id)}
             >
               {id.charAt(0).toUpperCase() + id.slice(1)}
@@ -77,7 +78,7 @@ export default function Navbar() {
           ))}
           <Link
             href="/booking"
-            className="ml-4 inline-flex items-center justify-center rounded-full px-6 py-2.5 font-semibold text-white shadow-lg hover:shadow-black/10 transition relative overflow-hidden bg-gradient-to-r from-[#3B82F6] via-[#60A5FA] to-[#3B82F6]"
+            className="pressable ml-4 inline-flex items-center justify-center rounded-full px-6 py-2.5 font-semibold text-white shadow-lg hover:shadow-black/10 transition relative overflow-hidden bg-gradient-to-r from-[#3B82F6] via-[#60A5FA] to-[#3B82F6]"
             onClick={playClick}
           >
             <span className="absolute inset-0 bg-white/20 opacity-20" />
@@ -108,7 +109,7 @@ export default function Navbar() {
               <a
                 key={id}
                 href={`#${id}`}
-                className="px-4 py-3 rounded-xl text-gray-700 hover:text-blue-600 hover:bg-[#F8FAFC] border border-gray-200 transition"
+                className="pressable px-4 py-3 rounded-xl text-gray-700 hover:text-blue-600 hover:bg-[#F8FAFC] border border-gray-200 transition"
                 onClick={(e) => {
                   handleSectionNav(e, id);
                   setOpen(false);
@@ -119,7 +120,7 @@ export default function Navbar() {
             ))}
             <Link
               href="/booking"
-              className="inline-flex items-center justify-center rounded-full px-6 py-3 font-semibold bg-blue-500 text-white shadow-lg hover:bg-blue-700 transition"
+              className="pressable inline-flex items-center justify-center rounded-full px-6 py-3 font-semibold bg-blue-500 text-white shadow-lg hover:bg-blue-700 transition"
               onClick={() => {
                 setOpen(false);
                 playClick();

@@ -5,7 +5,7 @@ export default function Background() {
   return (
     <div className="fixed inset-0 -z-10 pointer-events-none" aria-hidden="true">
       {/* Base Mist Blue Gray gradient: #F0F3F8 → #E3E8EF → #CED4DF */}
-      <div className="absolute inset-0 bg-linear-to-r from-[#d5ddeb] via-[#c3c6cb] to-[#adafb2] blur-2xl" />
+      <div className="absolute inset-0 bg-linear-to-r from-[#d4deff] via-[#eafffe] to-[#bcd7ffb4] blur-2xl" />
 
       {/* Steel blue-gray accent blobs for depth: #6E7F97, #4A637D */}
       <div

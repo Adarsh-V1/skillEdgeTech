@@ -55,7 +55,7 @@ export const siteContent = {
   pricing: [
     {
       tier: "Starter",
-      price: "₹500",
+      price: "₹1,000",
       features: [
         "1-3 pages",
         "Basic SEO",
@@ -66,7 +66,7 @@ export const siteContent = {
     },
     {
       tier: "Business",
-      price: "₹1,000",
+      price: "₹2,000",
       features: [
         "Up to 8 pages",
         "Advanced SEO",
@@ -77,7 +77,7 @@ export const siteContent = {
     },
     {
       tier: "Pro",
-      price: "₹2,000",
+      price: "₹3,000",
       features: [
         "Unlimited pages",
         "Premium SEO",
@@ -88,7 +88,7 @@ export const siteContent = {
     },
     {
       tier: "Premium",
-      price: "₹4,000",
+      price: "₹5,000",
       features: [
         "Everything in Pro",
         "Dedicated project manager",

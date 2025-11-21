@@ -34,14 +34,14 @@ export default function ServicesSection() {
         />
       </div>
       <div className="max-w-[1200px] mx-auto px-4">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-6 md:mb-10 text-gray-900">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-6 md:mb-10 text-gray-900 fx-text-expand">
           Our Web Design & Development Services
         </h2>
         <div className="grid gap-4 grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 mx-2">
           {serviceImages.map((s) => (
             <Tooltip key={s.id} text={s.label + " – Click to learn more"}>
               <div
-                className="relative transition-transform duration-150 hover:scale-105 group will-change-transform"
+                className="pressable group relative transition-transform duration-150 hover:scale-105 will-change-transform"
                 onClick={playClick}
                 style={{ minHeight: 220, height: "100%" }}
                 tabIndex={0}
@@ -59,7 +59,7 @@ export default function ServicesSection() {
                   />
                   <div className="absolute inset-0 flex items-center justify-center">
                     <span
-                      className="font-bold text-center px-4 py-2 rounded select-none pointer-events-none transition-all duration-300 text-lg sm:text-xl md:text-2xl text-white bg-black/20 opacity-90 group-hover:bg-black/40 group-hover:opacity-100"
+                      className="fx-text-expand font-bold text-center px-4 py-2 rounded select-none pointer-events-none transition-all duration-300 text-lg sm:text-xl md:text-2xl text-white bg-black/20 opacity-90 group-hover:bg-black/40 group-hover:opacity-100"
                       style={{ textShadow: "0 2px 12px #000, 0 1px 2px #222" }}
                     >
                       {s.label}
@@ -71,7 +71,7 @@ export default function ServicesSection() {
           ))}
         </div>
       </div>
-      {/* ...existing global fx-lite style (keep or remove as you prefer) ... */}
+      {/* ...existing code... */}
     </section>
   );
 }

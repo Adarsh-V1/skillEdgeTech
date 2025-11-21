@@ -14,7 +14,7 @@ export default function NewsletterSignup() {
       <div className="max-w-[1200px] mx-auto px-4 flex flex-col items-center">
         <div className="relative w-full max-w-lg mx-auto p-8 flex flex-col items-center rounded-2xl border border-gray-200 bg-white shadow-md shadow-black/5">
           <div className="absolute inset-0 bg-gradient-to-b from-white/30 to-transparent rounded-2xl pointer-events-none" />
-          <h3 className="text-2xl font-semibold mb-2 text-gray-900 text-center tracking-tight">
+          <h3 className="fx-text-expand text-2xl font-semibold mb-2 text-gray-900 text-center tracking-tight">
             Stay in the Loop
           </h3>
           <p className="text-gray-600 mb-6 text-center text-base sm:text-lg">
@@ -40,7 +40,7 @@ export default function NewsletterSignup() {
               <Tooltip text="Subscribe to our newsletter">
                 <button
                   type="submit"
-                  className="relative px-7 py-3 rounded-full font-semibold text-white shadow-lg hover:shadow-black/10 transition overflow-hidden bg-gradient-to-r from-[#3B82F6] via-[#60A5FA] to-[#3B82F6]"
+                  className="pressable relative px-7 py-3 rounded-full font-semibold text-white shadow-lg hover:shadow-black/10 transition overflow-hidden bg-gradient-to-r from-[#3B82F6] via-[#60A5FA] to-[#3B82F6]"
                   style={{
                     minWidth: 120,
                   }}

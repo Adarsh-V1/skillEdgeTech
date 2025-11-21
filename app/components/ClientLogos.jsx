@@ -12,12 +12,12 @@ export default function ClientLogos() {
       {/* unique background accents */}
       <div className="pointer-events-none absolute inset-x-0 top-0 h-32 -z-10 bg-gradient-to-b from-white/40 to-transparent fx-layer" />
       <div className="max-w-[1200px] mx-auto px-4">
-        <h3 className="text-center text-lg font-semibold mb-6 text-gray-600">Trusted by</h3>
+        <h3 className="fx-text-expand text-center text-lg font-semibold mb-6 text-gray-600">Trusted by</h3>
         <div className="flex flex-wrap justify-center items-center gap-6">
           {siteContent.clientLogos?.map((logo, idx) => (
             <Tooltip key={idx} text={logo.alt}>
               <div
-                className="relative overflow-hidden rounded-full bg-white p-2 shadow-md border border-gray-200 transition-transform duration-150 hover:scale-110"
+                className="pressable relative overflow-hidden rounded-full bg-white p-2 shadow-md border border-gray-200 transition-transform duration-150 hover:scale-110"
                 onClick={playClick}
                 style={{
                   width: 64,

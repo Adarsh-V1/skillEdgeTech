@@ -26,13 +26,14 @@ export default function HeroSection() {
   }, [current]);
 
   return (
-    <section className="px-2">
+    // make the whole hero a hover group
+    <section className="px-2 group/hero">
       <div className="max-w-[1200px] mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
         <div>
           <div className="mb-8 flex flex-col items-center relative">
             {/* Static gradient background behind logo */}
             <div
-              className="absolute inset-0 flex items-center justify-center"
+              className="absolute inset-0 flex items-center justify-center transition-transform duration-500 ease-out will-change-transform motion-reduce:transform-none group-hover/hero:scale-[1.04]"
               aria-hidden="true"
               style={{
                 zIndex: 0,
@@ -51,7 +52,7 @@ export default function HeroSection() {
               />
             </div>
             <div
-              className="flex items-center justify-center rounded-full relative shadow-2xl group bg-white/70 backdrop-blur-md border border-blue-200 transition-transform duration-150 hover:scale-105"
+              className="flex items-center justify-center rounded-full relative shadow-2xl group bg-white/70 backdrop-blur-md border border-blue-200 transition-transform duration-300 ease-out hover:scale-105 group-hover/hero:scale-[1.03] will-change-transform motion-reduce:transform-none"
               style={{
                 width: 180,
                 height: 180,
@@ -88,32 +89,34 @@ export default function HeroSection() {
             </div>
           </div>
           <h1 className="text-3xl sm:text-4xl md:text-6xl font-semibold leading-tight text-gray-900 text-center md:text-left mb-4">
-            <span className="inline-block transition-all hover:text-blue-600">
+            <span className="fx-text-expand inline-block">
               Oceanic Web Experiences for Modern Brands
             </span>
           </h1>
           <p className="mt-2 text-lg sm:text-xl md:text-2xl text-gray-600 max-w-2xl text-center md:text-left mb-6">
-            {siteContent.tagline.replace(/SkillEdge/gi, "Bluvia")}
+            <span className="fx-text-expand inline-block">
+              {siteContent.tagline.replace(/SkillEdge/gi, "Bluvia")}
+            </span>
           </p>
           <div className="mt-6 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center md:justify-start">
             <a
               href="/booking"
-              className="relative inline-flex items-center justify-center rounded-full px-6 py-3 font-semibold text-white shadow-lg hover:shadow-black/10 transition text-lg sm:text-xl overflow-hidden bg-gradient-to-r from-[#3B82F6] via-[#60A5FA] to-[#3B82F6]"
+              className="pressable relative inline-flex items-center justify-center rounded-full px-6 py-3 font-semibold text-white shadow-lg hover:shadow-black/10 transition text-lg sm:text-xl overflow-hidden bg-gradient-to-r from-[#3B82F6] via-[#60A5FA] to-[#3B82F6]"
             >
               <span className="absolute inset-0 bg-white/20 opacity-20" />
-              <span className="relative">Get started</span>
+              <span className="relative fx-text-expand">Get started</span>
             </a>
             <a
               href="#features"
-              className="inline-flex items-center justify-center rounded-full px-6 py-3 font-semibold border border-gray-200 bg-white text-gray-800 hover:bg-[#F8FAFC] transition text-lg sm:text-xl"
+              className="pressable inline-flex items-center justify-center rounded-full px-6 py-3 font-semibold border border-gray-200 bg-white text-gray-800 hover:bg-[#F8FAFC] transition text-lg sm:text-xl"
             >
-              Learn more
+              <span className="fx-text-expand">Learn more</span>
             </a>
           </div>
         </div>
         <div className="flex flex-col items-center md:justify-end">
           <div
-            className="relative rounded-xl overflow-hidden max-w-xs sm:max-w-sm md:max-w-lg w-full shadow"
+            className="relative rounded-xl overflow-hidden max-w-xs sm:max-w-sm md:max-w-lg w-full shadow transition-transform duration-300 ease-out hover:scale-[1.02] will-change-transform motion-reduce:transform-none group/card"
             style={{ background: "transparent" }}
             aria-live="polite"
           >
@@ -134,10 +137,8 @@ export default function HeroSection() {
                     src={img.src}
                     alt={img.alt}
                     fill
-                    className="object-cover w-full h-full transition duration-300"
-                    style={{
-                      borderRadius: "1rem",
-                    }}
+                    className="object-cover w-full h-full transition-transform duration-300 ease-out group-hover/card:scale-[1.02] will-change-transform motion-reduce:transform-none"
+                    style={{ borderRadius: "1rem" }}
                     sizes="(max-width: 768px) 100vw, 500px"
                     priority={idx === 0}
                     loading={idx === 0 ? "eager" : "lazy"}
@@ -146,13 +147,12 @@ export default function HeroSection() {
                   {/* Overlay label in the middle */}
                   <div className="absolute inset-0 flex items-center justify-center">
                     <span
-                      className="font-bold text-center px-6 py-3 rounded select-none pointer-events-none transition-all duration-300 text-xl sm:text-2xl md:text-3xl"
+                      className="fx-text-expand font-bold text-center px-6 py-3 rounded select-none pointer-events-none transition-transform duration-200 ease-out text-xl sm:text-2xl md:text-3xl"
                       style={{
                         color: "#fff",
                         textShadow: "0 2px 12px #000, 0 1px 2px #222",
                         background: "rgba(0,0,0,0.18)",
                         opacity: 0.92,
-                        // Ensure text is always white
                         WebkitTextFillColor: "#fff",
                         textFillColor: "#fff",
                       }}
@@ -164,11 +164,15 @@ export default function HeroSection() {
                 </div>
               ))}
             </div>
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10" role="tablist" aria-label="Hero image carousel">
+            <div
+              className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10"
+              role="tablist"
+              aria-label="Hero image carousel"
+            >
               {heroImages.map((_, idx) => (
                 <button
                   key={idx}
-                  className={`w-3 h-3 rounded-full ${current === idx ? "bg-blue-600" : "bg-blue-200"} transition`}
+                  className={`w-3 h-3 rounded-full ${current === idx ? "bg-blue-600" : "bg-blue-200"} transition-transform duration-150 ease-out hover:scale-125 active:scale-95 will-change-transform motion-reduce:transform-none`}
                   style={{
                     outline: "none",
                     border: "none",

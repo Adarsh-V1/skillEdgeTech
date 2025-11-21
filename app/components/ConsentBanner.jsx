@@ -29,6 +29,12 @@ export default function ConsentBanner() {
         analytics_storage: "granted",
       });
     }
+    // sync global flag so AdsWrapper can proceed immediately
+    if (typeof window.__acceptConsent === "function") {
+      window.__acceptConsent();
+    } else {
+      window.__consented = true;
+    }
     setVisible(false); // AdsWrapper will load script after content validates
   }
 
@@ -41,6 +47,11 @@ export default function ConsentBanner() {
         ad_personalization: "denied",
         analytics_storage: "denied",
       });
+    }
+    if (typeof window.__rejectConsent === "function") {
+      window.__rejectConsent();
+    } else {
+      window.__consented = false;
     }
     setVisible(false);
   }
@@ -61,13 +72,13 @@ export default function ConsentBanner() {
         <div className="flex gap-2 ml-0 sm:ml-auto">
           <button
             onClick={onlyNecessary}
-            className="px-4 py-2 rounded-full border border-gray-200 bg-white text-gray-800 hover:bg-gray-50 text-sm"
+            className="pressable px-4 py-2 rounded-full border border-gray-200 bg-white text-gray-800 hover:bg-gray-50 text-sm"
           >
             Only necessary
           </button>
           <button
             onClick={acceptAll}
-            className="px-4 py-2 rounded-full text-white bg-blue-600 hover:bg-blue-700 text-sm"
+            className="pressable px-4 py-2 rounded-full text-white bg-blue-600 hover:bg-blue-700 text-sm"
           >
             Accept all
           </button>

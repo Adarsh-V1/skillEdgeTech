@@ -41,14 +41,14 @@ export default function PortfolioSection() {
         <div className="absolute inset-0 bg-gradient-to-tr from-cyan-50/70 via-transparent to-indigo-50/40 opacity-70" />
       </div>
       <div className="max-w-[1200px] mx-auto px-4">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-6 md:mb-10 text-gray-900">
+        <h2 className="fx-text-expand text-2xl sm:text-3xl md:text-4xl font-semibold mb-6 md:mb-10 text-gray-900">
           Portfolio: Recent Web Projects by Bluvia
         </h2>
         <div className="grid gap-4 grid-cols-2 sm:grid-cols-2 md:grid-cols-3 mx-2">
           {portfolioImages.map((p, idx) => (
             <Tooltip key={`${p.name}-${idx}`} text={p.name}>
               <div
-                className="relative rounded-2xl overflow-hidden transition-transform duration-150 hover:scale-105 flex flex-col items-center text-center group will-change-transform"
+                className="pressable group relative rounded-2xl overflow-hidden transition-transform duration-150 hover:scale-105 flex flex-col items-center text-center will-change-transform"
                 onClick={playClick}
                 style={{ minHeight: 180, height: "100%", background: "transparent", padding: 0 }}
               >
@@ -66,7 +66,7 @@ export default function PortfolioSection() {
                   />
                   <div className="absolute inset-0 flex items-center justify-center">
                     <span
-                      className="font-bold text-center px-4 py-2 rounded select-none pointer-events-none transition-all duration-300 text-lg sm:text-xl md:text-2xl text-white bg-black/20 opacity-90 group-hover:bg-black/40 group-hover:opacity-100"
+                      className="fx-text-expand font-bold text-center px-4 py-2 rounded select-none pointer-events-none transition-all duration-300 text-lg sm:text-xl md:text-2xl text-white bg-black/20 opacity-90 group-hover:bg-black/40 group-hover:opacity-100"
                       style={{ textShadow: "0 2px 12px #000, 0 1px 2px #222" }}
                     >
                       {p.name}

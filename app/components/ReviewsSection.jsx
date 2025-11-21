@@ -7,7 +7,7 @@ export default function ReviewsSection() {
       {/* unique background accents */}
       <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-tr from-white/35 to-transparent fx-layer" />
       <div className="max-w-[1200px] mx-auto px-4">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-6 md:mb-10 text-gray-900">
+        <h2 className="fx-text-expand text-2xl sm:text-3xl md:text-4xl font-semibold mb-6 md:mb-10 text-gray-900">
           What clients say
         </h2>
         <div className="grid gap-4 grid-cols-2 sm:grid-cols-2">
