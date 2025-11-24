@@ -42,7 +42,7 @@ export default function PortfolioSection() {
       </div>
       <div className="max-w-[1200px] mx-auto px-4">
         <h2 className="fx-text-expand text-2xl sm:text-3xl md:text-4xl font-semibold mb-6 md:mb-10 text-gray-900">
-          Portfolio: Recent Web Projects by Bluvia
+          Portfolio: Recent Web Projects by Bluvia <span className="text-sm font-medium text-gray-500">(Plans from ₹1,000 / $12)</span>
         </h2>
         <div className="grid gap-4 grid-cols-2 sm:grid-cols-2 md:grid-cols-3 mx-2">
           {portfolioImages.map((p, idx) => (

@@ -104,7 +104,7 @@ export default function HeroSection() {
               className="pressable relative inline-flex items-center justify-center rounded-full px-6 py-3 font-semibold text-white shadow-lg hover:shadow-black/10 transition text-lg sm:text-xl overflow-hidden bg-gradient-to-r from-[#3B82F6] via-[#60A5FA] to-[#3B82F6]"
             >
               <span className="absolute inset-0 bg-white/20 opacity-20" />
-              <span className="relative fx-text-expand">Get started</span>
+              <span className="relative fx-text-expand">Get started (from ₹1,000 / $12)</span>
             </a>
             <a
               href="#features"

@@ -21,10 +21,10 @@ const websiteTypes = [
 ];
 
 const plans = [
-  { tier: "Starter Pack", price: "₹1,000" },
-  { tier: "Business Pack", price: "₹2,000" },
-  { tier: "Pro Pack", price: "₹3,000" },
-  { tier: "Premium Pack", price: "₹5,000" }
+  { tier: "Starter Pack", price: "₹1,000", usd: "$12" },
+  { tier: "Business Pack", price: "₹2,000", usd: "$24" },
+  { tier: "Pro Pack", price: "₹3,000", usd: "$36" },
+  { tier: "Premium Pack", price: "₹5,000", usd: "$60" }
 ];
 
 const showcaseImages = [
@@ -214,7 +214,7 @@ function BookingForm() {
               >
                 {plans.map(p => (
                   <option key={p.tier} value={p.tier} className="bg-white">
-                    {p.tier} ({p.price}){p.tier === "Business Pack" ? " - Recommended" : ""}
+                    {p.tier} ({p.price} / {p.usd}){p.tier === "Business Pack" ? " - Recommended" : ""}
                   </option>
                 ))}
               </select>
@@ -282,6 +282,7 @@ function BookingForm() {
             {/* hidden fields + error */}
             <input type="hidden" name="websiteType" value={fields.customType.trim() ? fields.customType : fields.websiteType} />
             <input type="hidden" name="customType" value={fields.customType} />
+            <input type="hidden" name="plan" value={`${fields.plan} - ${plans.find(x=>x.tier===fields.plan)?.price} (${plans.find(x=>x.tier===fields.plan)?.usd})`} />
             <input type="hidden" name="time" value={new Date().toLocaleString()} />
             {error && (
               <div className="md:col-span-2 text-red-600 font-semibold text-sm text-center">

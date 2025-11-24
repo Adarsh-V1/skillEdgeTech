@@ -13,6 +13,7 @@ const plans = [
 	{
 		tier: "Starter Pack",
 		price: "₹1,000",
+		usd: "$12",
 		features: [
 			"Up to 2 pages",
 			"Responsive design",
@@ -25,6 +26,7 @@ const plans = [
 	{
 		tier: "Business Pack",
 		price: "₹2,000",
+		usd: "$24",
 		features: [
 			"Up to 5 pages",
 			"Advanced on-page SEO",
@@ -39,6 +41,7 @@ const plans = [
 	{
 		tier: "Pro Pack",
 		price: "₹3,000",
+		usd: "$36",
 		features: [
 			"Up to 10 pages",
 			"Premium SEO",
@@ -53,6 +56,7 @@ const plans = [
 	{
 		tier: "Premium Pack",
 		price: "₹5,000",
+		usd: "$60",
 		features: [
 			"Everything in Pro",
 			"Custom branding",
@@ -132,7 +136,10 @@ export default function PricingSection() {
 									{p.tier}
 								</h3>
 								<p className="fx-text-expand mt-1 text-2xl sm:text-3xl md:text-4xl font-extrabold text-blue-500">
-									{p.price}
+									{p.price}{" "}
+									<span className="text-sm font-semibold text-gray-500">
+										({p.usd})
+									</span>
 								</p>
 								<ul className="mt-4 space-y-1 sm:space-y-2 text-sm sm:text-base md:text-lg text-gray-600 text-center">
 									{p.features.map((f, i2) => (
@@ -215,7 +222,19 @@ function PlanModal({ plan, onClose }) {
 					Get Started with {plan?.tier}
 				</h3>
 				<div className="fx-text-expand text-center text-gray-600 mb-4">
-					{plan?.price}
+					{plan?.price}{" "}
+					<span className="text-sm font-semibold text-gray-500">
+						({plan?.usd ||
+							(plan?.price === "₹1,000"
+								? "$12"
+								: plan?.price === "₹2,000"
+								? "$24"
+								: plan?.price === "₹3,000"
+								? "$36"
+								: plan?.price === "₹5,000"
+								? "$60"
+								: "")})
+					</span>
 				</div>
 				{!submitted ? (
 					<form
